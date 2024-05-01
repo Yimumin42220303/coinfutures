@@ -6,10 +6,9 @@ function calculateTrade() {
     var riskAmount = seedAmount * 0.05; // 시드의 5%
     var priceDifference = entryPrice - stopLossPrice;
     var percentLoss = priceDifference / entryPrice;
-    var orderAmount = riskAmount / percentLoss; // 주문량 (USDT)
+    var orderAmount = Math.abs(riskAmount / percentLoss); // 주문량 (USDT)의 절대값
 
     document.getElementById('result').innerHTML = `
-        주문량: ${orderAmount.toFixed(2)} USDT <br>
-        진입 배율: ${(riskAmount / orderAmount).toFixed(1)} 배
+        주문량: ${orderAmount.toFixed(2)} USDT
     `;
 }
