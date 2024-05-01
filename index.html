@@ -1,1 +1,37 @@
+from keep_alive import keep_alive
 
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>비트코인 선물 거래 계산기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>코인선물 진입계산기</h1>
+
+        <div class="input-group">
+            <label for="entryPrice">진입 가격 (USDT):</label>
+            <input type="number" id="entryPrice" placeholder="진입 가격 입력">
+        </div>
+
+        <div class="input-group">
+            <label for="stopLossPrice">손절 가격 (USDT):</label>
+            <input type="number" id="stopLossPrice" placeholder="손절 가격 입력">
+        </div>
+
+        <div class="input-group">
+            <label for="seedAmount">시드 금액 (USDT):</label>
+            <input type="number" id="seedAmount" placeholder="시드 금액 입력">
+        </div>
+
+        <button onclick="calculateTrade()">계산하기</button>
+       <h1>copyright는 MJ의라스트댄스의 MJ님께 있어요-시바코린이올림 </h1>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+keep_alive()
