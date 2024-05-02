@@ -82,3 +82,13 @@ button:hover {
         padding: 15px; /* 버튼 클릭이 더 쉽도록 크기를 조정 */
     }
 }
+
+#copyConfirm {
+    color: green; // 확인 메시지의 색상을 녹색으로 설정
+    font-size: 1rem;
+    position: absolute; // 메시지 위치 조정
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); // 메시지를 화면 중앙에 위치시키기
+}
+
