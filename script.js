@@ -6,7 +6,7 @@ function calculateTrade() {
     var riskAmount = seedAmount * 0.05;
     var priceDifference = entryPrice - stopLossPrice;
     var percentLoss = priceDifference / entryPrice;
-    var orderAmount = riskAmount / percentLoss;
+    var orderAmount = Math.abs(riskAmount / percentLoss);  // 주문량을 절대값으로 계산
 
     document.getElementById('result').innerText = `${orderAmount.toFixed(2)} USDT`;
     document.getElementById('copyButton').style.display = 'block'; // 계산 후 복사하기 버튼 표시
