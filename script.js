@@ -9,14 +9,16 @@ function calculateTrade() {
     var orderAmount = riskAmount / percentLoss;
 
     document.getElementById('result').innerText = `${orderAmount.toFixed(2)} USDT`;
+    document.getElementById('copyButton').style.display = 'block'; // 계산 후 복사하기 버튼 표시
 }
 
 // 클립보드로 복사 기능
 function copyToClipboard() {
     var content = document.getElementById('result').innerText;
-    navigator.clipboard.writeText(content)
+    var numericValue = content.replace(/[^\d.-]/g, ''); // "USDT"를 제외하고 숫자만 추출
+    navigator.clipboard.writeText(numericValue)
         .then(() => {
-            alert('클립보드에 복사되었습니다.');
+            alert('클립보드에 복사되었습니다: ' + numericValue);
         })
         .catch(err => {
             console.error('클립보드 복사에 실패하였습니다.', err);
