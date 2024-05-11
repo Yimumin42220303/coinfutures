@@ -1,27 +1,18 @@
-function copyToClipboard(elementId) {
-    var content = document.getElementById('result').innerText;
-    var text = '';
-    if (elementId === 'orderAmount') {
-        // 주문 값에서 숫자만 추출
-        text = content.split('USDT')[0].split(': ')[1].trim();
-    } else if (elementId === 'breakevenLine') {
-        // 반익절라인에서 숫자만 추출
-        text = content.split('USDT')[1].split(': ')[1].trim();
-    }
+function calculateTrade() {
+    var entryPrice = parseFloat(document.getElementById('entryPrice').value);
+    var stopLossPrice = parseFloat(document.getElementById('stopLossPrice').value);
+    var seedAmount = parseFloat(document.getElementById('seedAmount').value);
 
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            showCopyConfirm();
-        })
-        .catch(err => {
-            console.error('클립보드 복사에 실패하였습니다.', err);
-        });
-}
+    // 주문 값 계산
+    var riskAmount = seedAmount * 0.05;
+    var priceDifference = entryPrice - stopLossPrice;
+    var percentLoss = priceDifference / entryPrice;
+    var orderAmount = Math.abs(riskAmount / percentLoss);  
 
-function showCopyConfirm() {
-    let confirmDiv = document.getElementById('copyConfirm');
-    confirmDiv.style.display = 'block';
-    setTimeout(() => {
-        confirmDiv.style.display = 'none';
-    }, 2000);
+    // 반익절라인 계산
+    var breakevenLine = entryPrice + (entryPrice - stopLossPrice) * 1.5;
+
+    // 결과 표시
+    document.getElementById('result').innerHTML = `주문 값: ${orderAmount.toFixed(2)} USDT<br>반익절라인(USDT): ${breakevenLine.toFixed(2)}`;
+    document.getElementById('copyButton').style.display = 'block';
 }
