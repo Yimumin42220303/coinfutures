@@ -13,6 +13,6 @@ function calculateTrade() {
     var breakevenLine = entryPrice + (entryPrice - stopLossPrice) * 1.5;
 
     // 결과 표시
-    document.getElementById('result').innerHTML = `주문 값: ${orderAmount.toFixed(2)} USDT<br>반익절라인(USDT): ${breakevenLine.toFixed(2)}`;
+    document.getElementById('result').innerHTML = `주문 값: ${orderAmount.toFixed(2)} USDT<br>반익절라인: ${breakevenLine.toFixed(2)} USDT`;
     document.getElementById('copyButton').style.display = 'block';
 }
